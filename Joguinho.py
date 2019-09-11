@@ -9,15 +9,21 @@ print("####################################################################")
 
 # Variaveis de jogo
 numero_secreto=42
-total_tentativas=5
+total_tentativas=2
 rodada=1
 
 while(rodada<=total_tentativas):
-    print("Tentativa {} de {}",rodada,total_tentativas)
+    rodada_str=str(rodada)
+    total_tentativas_str=str(total_tentativas)
+    #não entendi porque tem que ser .format() mas só funcionou assim
+    print("===> Tentativa {} de {}".format(rodada,total_tentativas))
     chute_str=input("Dá seu chute ae\n")
-    print("Você está certo de que é ",chute_str,"?\n")
+    #print("Você está certo de que é ",chute_str,"?\n")
     chute=int(chute_str)
 
+    ''' Valores booleanos criados diretamente fora, para facilitar a leitura, nunca pensei em fazer
+        isso em outra linguagem
+    '''
     acertou=(chute==numero_secreto)
     maior=(chute>numero_secreto)
     menor=(chute<numero_secreto)
@@ -31,4 +37,4 @@ while(rodada<=total_tentativas):
             print("Você errou! muito baixo\n")
 
     rodada=rodada+1
-
+print("Fim de Jogo")
