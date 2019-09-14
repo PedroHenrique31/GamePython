@@ -10,12 +10,18 @@ print("####################################################################")
 print("################### Jogo de advinhação #############################")
 print("####################################################################")
 
-# Variaveis de jogo
+'''     Predefinições do jogo
+    Definições importantes de ambiente, antes do jogo se iniciar,
+    Variáveis e funções para tratar excessões
+'''
 #numero_secreto=round(random.random()*100)
 numero_secreto=random.randrange(1,101)#agora gera numeros aleatorios entre 0 e 100
 total_tentativas=2
 rodada=1
 cheet=4096
+#cheetou=(chute==cheet)
+
+
 #Agora uma pequena função de cheet para testar o jogo
 def resp(codigo):
     senha=4096
@@ -23,7 +29,20 @@ def resp(codigo):
         print("Numero_secreto= ", numero_secreto)
     else:
         print("Numero_secreto= Achou que ia ter respota né... raaa\n")
+#TODO:Criar uma função para selecionar esses níveis dinamicamente, assim o usuário pode por qualquer número e ele será ajustável
+print("Selecione nível de dificuldade\n(1)Fácil (2)Médio (3)Difícil\n")
+nivel=int(input("Digite o nível:"))
+if(nivel==1):
+    total_tentativas=9
+elif(nivel==2):
+    total_tentativas=5
+else:
+    total_tentativas=3
 
+
+'''     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Engine do jogo em si
+'''
 for rodada in range(1,total_tentativas+1):
     rodada_str=str(rodada)
     total_tentativas_str=str(total_tentativas)
@@ -32,7 +51,10 @@ for rodada in range(1,total_tentativas+1):
     chute_str=input("Dá seu chute ae entre 1 e 100\n")
     #print("Você está certo de que é ",chute_str,"?\n")
     chute=int(chute_str)
-    if((chute<1) or (chute>100)):
+    cheetou = (chute == cheet)
+    if (cheetou):  # invocação do cheet
+        resp(chute)
+    elif((chute<1) or (chute>100)):
         print("ENTRE 1 E 100 CEEEEEM!!\n")
         continue#esse comando diferentemente do break não sai do laço, ele apenas pula essa iteração
 
@@ -43,7 +65,6 @@ for rodada in range(1,total_tentativas+1):
     acertou=(chute==numero_secreto)
     maior=(chute>numero_secreto)
     menor=(chute<numero_secreto)
-    cheetou=(chute==cheet)
 
     if(acertou):
         print("Ae mizeravi\n")
@@ -57,4 +78,4 @@ for rodada in range(1,total_tentativas+1):
             print("Você errou! muito baixo\n")
 
     rodada=rodada+1
-print("Fim de Jogo")
+print("Fim de Jogo!!!!!")
