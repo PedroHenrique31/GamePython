@@ -2,6 +2,8 @@
                 Projeto de jogo de advinhação
     Como parte do curso de pyhton da alura cursos online tenho feito esse jogo de advinhação
 é um conceito simples mas bastante escalável.
+    O conceito de pontos será feito de forma invertida, o jogador começa com mil pontos que vão sendo subtraídos
+conforme o tamanho do erro do jogador.
 '''
 #TODO:A senha e o número para invocar o cheet estão iguais, melhor corrigir isso, para nao soprar direto.
 import random
@@ -19,6 +21,7 @@ numero_secreto=random.randrange(1,101)#agora gera numeros aleatorios entre 0 e 1
 total_tentativas=2
 rodada=1
 cheet=4096
+pontos=1000
 #cheetou=(chute==cheet)
 
 
@@ -76,6 +79,8 @@ for rodada in range(1,total_tentativas+1):
             print("Você errou! foi muito longe\n")
         elif(menor):
             print("Você errou! muito baixo\n")
+        pontos_perdidos=abs(numero_secreto-chute)
+        pontos=pontos-pontos_perdidos
 
     rodada=rodada+1
-print("Fim de Jogo!!!!!")
+print("Fim de Jogo!!!\nVocê fez:{}\nO número era {}".format(pontos,numero_secreto))
