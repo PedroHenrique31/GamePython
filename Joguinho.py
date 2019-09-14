@@ -3,6 +3,7 @@
     Como parte do curso de pyhton da alura cursos online tenho feito esse jogo de advinhação
 é um conceito simples mas bastante escalável.
 '''
+#TODO:A senha e o número para invocar o cheet estão iguais, melhor corrigir isso, para nao soprar direto.
 import random
 
 print("####################################################################")
@@ -10,7 +11,8 @@ print("################### Jogo de advinhação #############################")
 print("####################################################################")
 
 # Variaveis de jogo
-numero_secreto=round(random.random()*100)#agora gera numeros aleatorios entre 0 e 100
+#numero_secreto=round(random.random()*100)
+numero_secreto=random.randrange(1,101)#agora gera numeros aleatorios entre 0 e 100
 total_tentativas=2
 rodada=1
 cheet=4096
@@ -27,11 +29,11 @@ for rodada in range(1,total_tentativas+1):
     total_tentativas_str=str(total_tentativas)
     #não entendi porque tem que ser .format() mas só funcionou assim
     print("===> Tentativa {} de {}".format(rodada,total_tentativas))
-    chute_str=input("Dá seu chute ae entre 1 e 10 milhões\n")
+    chute_str=input("Dá seu chute ae entre 1 e 100\n")
     #print("Você está certo de que é ",chute_str,"?\n")
     chute=int(chute_str)
     if((chute<1) or (chute>100)):
-        print("ENTRE 1 E 10 MILHÕÕÕES!!\n")
+        print("ENTRE 1 E 100 CEEEEEM!!\n")
         continue#esse comando diferentemente do break não sai do laço, ele apenas pula essa iteração
 
 
@@ -42,7 +44,7 @@ for rodada in range(1,total_tentativas+1):
     maior=(chute>numero_secreto)
     menor=(chute<numero_secreto)
     cheetou=(chute==cheet)
-    
+
     if(acertou):
         print("Ae mizeravi\n")
         break
