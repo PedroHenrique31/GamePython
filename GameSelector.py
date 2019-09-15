@@ -11,13 +11,12 @@ print("******** OLÁÁÁ!! Temos vários Jogos!\n")
 print("******* Escolha seu jogooo************")
 
 print("(1)Forca (2)Advinhação")
-jogo=input("Qual a sua escolha? ")
+jogo=int(input("Qual a sua escolha? "))
 
 if(jogo==1):
     print("Então é forca!")
     forca.jogar_forca()
-elif(jogo==2):
+elif (jogo==2):
     print("Então vai ser advinhação!!")
     Joguinho.jogar_advinhacao()
-else:
-    print("Game Over")
+print("Obrigado e até logo!! ;-)\n")

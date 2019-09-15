@@ -9,3 +9,12 @@ def jogar_forca():
     print("***************************************")
 
     print("Fim de Jogo!!!\n")
+'''
+        IMPORTANTE
+    Chamada recursiva do módulo, esse if é o que permite a execução do modulo individualmente pelo interpretador
+python, uma vez que você chama um modulo ele é guardado na variável __name__, sem essa diretiva o modulo main que será
+executado seria somente GameSelector, com essa chamada do modulo para sua propria função podemos portanto executá-lo
+separadamente da função GameSelector.
+'''
+if(__name__=="__main__"):
+    jogar_forca()
