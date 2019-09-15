@@ -3,7 +3,7 @@
 
 '''
 import forca
-import advinhacao
+import Joguinho
 
 
 print("*************************************")
@@ -11,9 +11,13 @@ print("******** OLÁÁÁ!! Temos vários Jogos!\n")
 print("******* Escolha seu jogooo************")
 
 print("(1)Forca (2)Advinhação")
-input("Qual a sua escolha? ")
+jogo=input("Qual a sua escolha? ")
 
 if(jogo==1):
     print("Então é forca!")
-else:
+    forca.jogar_forca()
+elif(jogo==2):
     print("Então vai ser advinhação!!")
+    Joguinho.jogar_advinhacao()
+else:
+    print("Game Over")
