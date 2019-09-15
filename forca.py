@@ -7,7 +7,14 @@ def jogar_forca():
     print("***************************************")
     print("***Bem vindo ao jogo da forca**********")
     print("***************************************")
+    #variáveis de jogo
+    palavra_secreta="banana"
+    enforcou=False
+    acertou=False
 
+    #Game loop
+    while(not enforcou and not acertou):
+        print("Jogando...")
     print("Fim de Jogo!!!\n")
 '''
         IMPORTANTE
