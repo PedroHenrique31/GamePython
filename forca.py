@@ -12,8 +12,17 @@ def jogar_forca():
     enforcou=False
     acertou=False
 
+
     #Game loop
     while(not enforcou and not acertou):
+        chute=input("Dá um chute ae: ")
+
+        index=0
+        for letra in palavra_secreta:
+            if(chute==letra):
+                print("Encontrei a letra {} na posição {}".format(chute,index))
+            #print("index= ",index)
+            index = index+1
         print("Jogando...")
     print("Fim de Jogo!!!\n")
 '''
