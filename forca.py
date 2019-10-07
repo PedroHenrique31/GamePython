@@ -8,34 +8,43 @@ def jogar_forca():
     print("***Bem vindo ao jogo da forca**********")
     print("***************************************")
     #variáveis de jogo
-    palavra_secreta="banana"
+    palavra_secreta="banana".upper()
     letra_certa=["_","_","_","_","_","_"]
 
     enforcou=False
     acertou=False
-
+    erros=0
 
     #Game loop
     while(not enforcou and not acertou):
         chute=input("Dá um chute ae: ")
-        chute=chute.strip()#tira os espacos
+        chute=chute.strip().upper()#tira os espacos e converte tudo pra maiusculo
 
         posicao=0
         print(letra_certa)#Imprime a forca pra dar uma previa
-        for letra in palavra_secreta:
-            if(chute.upper()==letra.upper()):#letra.upper, tranforma udo em caps lock
-                #print("Encontrei a letra {} na posição {}".format(chute,posicao))
-                letra_certa[posicao]=letra
-            #print("index= ",index)
-            posicao = posicao+1
+        if(chute in palavra_secreta):
+            for letra in palavra_secreta:
+                if(chute==letra.upper()):#letra.upper, tranforma udo em caps lock
+                    #print("Encontrei a letra {} na posição {}".format(chute,posicao))
+                    letra_certa[posicao]=letra
+                #print("index= ",index)
+                posicao = posicao+1
+        else:
+            erros+=1
+        acertou=("_" not in palavra_secreta)
+        enforcou=(erros==6)
         print(letra_certa)
         print("Jogando...")
+    if(acertou):
+        print("Parabéns!!! Você venceu!! ;)\n")
+    else:
+        print("Você perdeu!!")
     print("Fim de Jogo!!!\n")
 '''
         IMPORTANTE
     Chamada recursiva do módulo, esse if é o que permite a execução do modulo individualmente pelo interpretador
 python, uma vez que você chama um modulo ele é guardado na variável __name__, sem essa diretiva o modulo main que será
-executado seria somente GameSelector, com essa chamada do modulo para sua propria função podemos portanto executá-lo
+executado somente se GameSelector, com essa chamada do modulo para sua propria função podemos portanto executá-lo
 separadamente da função GameSelector.
 '''
 if(__name__=="__main__"):
