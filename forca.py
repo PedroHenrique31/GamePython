@@ -10,14 +10,14 @@ def jogar_forca():
     print("***************************************")
 
     #Lê de um arquivo as palavras para o jogo
-    arquivo=open("palavras.txt","r")
+    with open("palavras.txt","r") as arquivo
     palavras=[]
 
     for linha in arquivo:
         linha=linha.strip()
         palavras.append(linha)
     print(palavras)
-    arquivo.close()
+    
     palavra_sorteada=random.randrange(0,len(palavras))
     #variáveis de jogo
     palavra_secreta=palavras[palavra_sorteada].upper()
