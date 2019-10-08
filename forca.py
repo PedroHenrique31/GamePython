@@ -2,13 +2,25 @@
     Novo modulo que dá a opção de um outro jogo, ainda não está pronto, mas já temos know how.
     Obs:Para não ser xecutado automaticamente é preciso definir apenas funções no módulo.
 '''
+import random
 def jogar_forca():
 
     print("***************************************")
     print("***Bem vindo ao jogo da forca**********")
     print("***************************************")
+
+    #Lê de um arquivo as palavras para o jogo
+    arquivo=open("palavras.txt","r")
+    palavras=[]
+
+    for linha in arquivo:
+        linha=linha.strip()
+        palavras.append(linha)
+    print(palavras)
+    arquivo.close()
+    palavra_sorteada=random.randrange(0,len(palavras))
     #variáveis de jogo
-    palavra_secreta="banana".upper()
+    palavra_secreta=palavras[palavra_sorteada].upper()
     tamanho_chances=6
     letra_certa=["_" for letras in palavra_secreta]
 
@@ -24,7 +36,6 @@ def jogar_forca():
         chute=chute.strip().upper()#tira os espacos e converte tudo pra maiusculo
 
         posicao=0
-        #print(letra_certa)#Imprime a forca pra dar uma previa
         if(chute in palavra_secreta):
             for letra in palavra_secreta:
                 if(chute==letra):#letra.upper, tranforma udo em caps lock
