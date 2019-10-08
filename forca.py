@@ -17,7 +17,7 @@ def jogar_forca():
         linha=linha.strip()
         palavras.append(linha)
     print(palavras)
-    
+
     palavra_sorteada=random.randrange(0,len(palavras))
     #variáveis de jogo
     palavra_secreta=palavras[palavra_sorteada].upper()
@@ -60,5 +60,8 @@ python, uma vez que você chama um modulo ele é guardado na variável __name__,
 executado somente se GameSelector, com essa chamada do modulo para sua propria função podemos portanto executá-lo
 separadamente da função GameSelector.
 '''
+def carrega_palavras():
+    # Lê de um arquivo as palavras para o jogo
+    with open("palavras.txt", "r") as arquivo
 if(__name__=="__main__"):
     jogar_forca()
