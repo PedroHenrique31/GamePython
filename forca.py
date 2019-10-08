@@ -9,32 +9,34 @@ def jogar_forca():
     print("***************************************")
     #variáveis de jogo
     palavra_secreta="banana".upper()
-    letra_certa=["_","_","_","_","_","_"]
+    tamanho_chances=6
+    letra_certa=["_" for letras in palavra_secreta]
 
     enforcou=False
     acertou=False
     erros=0
 
+    print(letra_certa)  # Imprime a forca pra dar uma previa
     #Game loop
     while(not enforcou and not acertou):
+
         chute=input("Dá um chute ae: ")
         chute=chute.strip().upper()#tira os espacos e converte tudo pra maiusculo
 
         posicao=0
-        print(letra_certa)#Imprime a forca pra dar uma previa
+        #print(letra_certa)#Imprime a forca pra dar uma previa
         if(chute in palavra_secreta):
             for letra in palavra_secreta:
-                if(chute==letra.upper()):#letra.upper, tranforma udo em caps lock
-                    #print("Encontrei a letra {} na posição {}".format(chute,posicao))
+                if(chute==letra):#letra.upper, tranforma udo em caps lock
                     letra_certa[posicao]=letra
-                #print("index= ",index)
                 posicao = posicao+1
         else:
             erros+=1
-        acertou=("_" not in palavra_secreta)
-        enforcou=(erros==6)
+
+        acertou=("_" not in letra_certa)
+        enforcou=(erros==tamanho_chances)
         print(letra_certa)
-        print("Jogando...")
+    print("Jogando...")
     if(acertou):
         print("Parabéns!!! Você venceu!! ;)\n")
     else:
